@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>SYSTEME TACTIQUE :: Municipales 2026 - TOUS DÉPARTEMENTS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #030508;
+            background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .panel {
+            background: #0a0f18;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        @media (min-width: 768px) {
+            .panel {
+                padding: 24px;
+            }
+            body {
+                padding: 20px;
+            }
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        .neon-blue {
+            color: #00f3ff;
+        }
+        .neon-red {
+            color: #ff003c;
+        }
+        .neon-green {
+            color: #00ff9d;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 640px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .download-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .download-card {
+                padding: 20px;
+            }
+        }
+        
+        .download-card:hover {
+            border-color: #00f3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+        
+        .download-card .size {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #1e293b;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            color: #00f3ff;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #00f3ff;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .download-btn {
+                width: auto;
+                padding: 10px 20px;
+            }
+        }
+        
+        .download-btn:hover {
+            background: white;
+            box-shadow: 0 0 15px #00f3ff;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-right: 3px;
+        }
+        
+        .badge-blue { background: rgba(0, 243, 255, 0.2); color: #00f3ff; }
+        .badge-green { background: rgba(0, 255, 157, 0.2); color: #00ff9d; }
+        .badge-red { background: rgba(255, 0, 60, 0.2); color: #ff003c; }
+        
+        .upload-zone {
+            border: 2px dashed #1e293b;
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        @media (min-width: 768px) {
+            .upload-zone {
+                padding: 40px;
+            }
+        }
+        
+        .upload-zone:hover {
+            border-color: #00f3ff;
+        }
+        
+        .upload-zone i {
+            font-size: 2.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .upload-zone i {
+                font-size: 3rem;
+            }
+        }
+        
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .search-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        .search-input, .search-select {
+            background: #0a0f18;
+            border: 1px solid #334155;
+            color: #00f3ff;
+            padding: 12px;
+            border-radius: 6px;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .search-input:focus, .search-select:focus {
+            outline: none;
+            border-color: #00f3ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+        
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+            padding: 12px 0;
+            border-top: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        .filter-tag {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid #00f3ff;
+            color: #00f3ff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .filter-tag button {
+            background: none;
+            border: none;
+            color: #ff003c;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .search-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            background: #0a0f18;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .search-stats {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        
+        .action-btn {
+            background: #334155;
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        .search-btn {
+            background: #00f3ff;
+            border: none;
+            color: black;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .action-btn, .search-btn {
+                width: auto;
+                padding: 12px 20px;
+            }
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        @media (min-width: 768px) {
+            .table-container {
+                max-height: 500px;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+        
+        th {
+            background: #0f172a;
+            color: #00f3ff;
+            padding: 10px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            font-size: 0.75rem;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #1e293b;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+        
+        tr:hover {
+            background: rgba(0, 243, 255, 0.05);
+        }
+        
+        .role-badge {
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+        .role-chef {
+            background: rgba(255, 0, 60, 0.2);
+            color: #ff003c;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        
+        .header-right {
+            text-align: left;
+        }
+        
+        @media (min-width: 768px) {
+            .header-right {
+                text-align: right;
+            }
+        }
+        
+        .explorer-select {
+            background: #0a0f18;
+            border: 1px solid #334155;
+            color: #00f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        @media (min-width: 768px) {
+            .explorer-select {
+                width: auto;
+                min-width: 300px;
+                margin-top: 0;
+            }
+        }
+        
+        .explorer-link {
+            display: inline-block;
+            background: #00f3ff;
+            color: black;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        @media (min-width: 768px) {
+            .explorer-link {
+                width: auto;
+                padding: 15px 40px;
+            }
+        }
+        
+        footer {
+            border-top: 1px solid #1e293b;
+            padding: 15px 0;
+            margin-top: 30px;
+            text-align: center;
+            color: #475569;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div class="panel">
+            <div style="height:2px; background:linear-gradient(90deg, #0055ff 33%, #ffffff 33%, #ffffff 66%, #ff003c 66%); margin-bottom:15px;"></div>
+            <div class="header-content">
+                <div>
+                    <h1>MUNICIPALES <span class="neon-blue">2026</span></h1>
+                    <p style="color:#475569; margin-top:5px; font-size:0.8rem;">
+                        <i class="fas fa-map" style="color:#00f3ff;"></i> 
+                        TOUS LES DÉPARTEMENTS DE FRANCE
+                    </p>
+                </div>
+                <div class="header-right">
+                    <div style="color:#475569; font-size:0.7rem;">FICHIER PRINCIPAL</div>
+                    <div style="color:#00ff9d; font-size:0.9rem;">137,8 Mo · 7K+ téléchargements</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOURCE UNIQUE : Fichier France entière - AVEC LE BON LIEN -->
+        <div class="panel">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+                <i class="fas fa-database" style="color:#00f3ff;"></i>
+                <h2 style="color:white; font-size:1.2rem;">SOURCE OFFICIELLE DATA.GOUV.FR</h2>
+            </div>
+            
+            <div class="download-card" style="margin-bottom:0;">
+                <span class="size">137,8 Mo</span>
+                <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px;">
+                    <i class="fas fa-map fa-3x" style="color:#00f3ff;"></i>
+                    <div>
+                        <h3 style="color:white; font-size:1.2rem;">FRANCE ENTIÈRE</h3>
+                        <p style="color:#475569;">Tous les départements métropole + DROM-COM</p>
+                    </div>
+                </div>
+                <div style="margin:15px 0; display:flex; flex-wrap:wrap; gap:5px;">
+                    <span class="badge badge-blue">01-19</span>
+                    <span class="badge badge-blue">20-29</span>
+                    <span class="badge badge-blue">30-39</span>
+                    <span class="badge badge-blue">40-49</span>
+                    <span class="badge badge-blue">50-59</span>
+                    <span class="badge badge-blue">60-69</span>
+                    <span class="badge badge-blue">70-79</span>
+                    <span class="badge badge-blue">80-89</span>
+                    <span class="badge badge-blue">90-95</span>
+                    <span class="badge badge-green">971-976</span>
+                    <span class="badge badge-red">977-988</span>
+                </div>
+                <p class="text-sm" style="color:#94a3b8; margin:10px 0;">
+                    <i class="fas fa-check-circle" style="color:#00ff9d;"></i> 
+                    101 départements · Métropole + Outre-mer · 7 000+ téléchargements
+                </p>
+                <!-- LIEN CORRECT AVEC LE BON RESOURCE_ID -->
+                <a href="https://www.data.gouv.fr/datasets/elections-municipales-2026-listes-candidates-au-premier-tour?resource_id=b929c2a4-18ec-4e8b-bc37-2ff346a867cd" target="_blank" class="download-btn" style="width:100%;">
+                    <i class="fas fa-download mr-2"></i> TÉLÉCHARGER LE FICHIER COMPLET
+                </a>
+            </div>
+        </div>
+
+        <!-- STATISTIQUES RAPIDES -->
+        <div class="grid-4" style="margin-bottom:20px;">
+            <div class="download-card">
+                <div style="color:#475569; font-size:0.7rem;">DÉPARTEMENTS</div>
+                <div style="font-size:2rem; color:white;">101</div>
+                <div style="color:#00f3ff; font-size:0.7rem;">métropole + outre-mer</div>
+            </div>
+            <div class="download-card">
+                <div style="color:#475569; font-size:0.7rem;">RÉGIONS</div>
+                <div style="font-size:2rem; color:white;">18</div>
+                <div style="color:#00ff9d; font-size:0.7rem;">dont 5 outre-mer</div>
+            </div>
+            <div class="download-card">
+                <div style="color:#475569; font-size:0.7rem;">COMMUNES</div>
+                <div style="font-size:2rem; color:white;">~35 000</div>
+                <div style="color:#ff003c; font-size:0.7rem;">environ</div>
+            </div>
+            <div class="download-card">
+                <div style="color:#475569; font-size:0.7rem;">CANDIDATS</div>
+                <div style="font-size:2rem; color:white;">~900k</div>
+                <div style="color:#00f3ff; font-size:0.7rem;">estimé</div>
+            </div>
+        </div>
+
+        <!-- EXPLORATEUR -->
+        <div class="panel">
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <i class="fas fa-map-marked-alt" style="color:#00f3ff;"></i>
+                    <h2 style="color:white; font-size:1.1rem;">EXPLORATEUR CARTOGRAPHIQUE</h2>
+                </div>
+                <select id="departementSelect" class="explorer-select">
+                    <optgroup label="Métropole (01-19)">
+                        <option value="01">01 · AIN</option>
+                        <option value="02">02 · AISNE</option>
+                        <option value="03">03 · ALLIER</option>
+                        <option value="04">04 · ALPES-DE-HAUTE-PROVENCE</option>
+                        <option value="05">05 · HAUTES-ALPES</option>
+                        <option value="06">06 · ALPES-MARITIMES</option>
+                        <option value="07">07 · ARDÈCHE</option>
+                        <option value="08">08 · ARDENNES</option>
+                        <option value="09">09 · ARIÈGE</option>
+                        <option value="10">10 · AUBE</option>
+                        <option value="11">11 · AUDE</option>
+                        <option value="12">12 · AVEYRON</option>
+                        <option value="13">13 · BOUCHES-DU-RHÔNE</option>
+                        <option value="14">14 · CALVADOS</option>
+                        <option value="15">15 · CANTAL</option>
+                        <option value="16">16 · CHARENTE</option>
+                        <option value="17">17 · CHARENTE-MARITIME</option>
+                        <option value="18">18 · CHER</option>
+                        <option value="19">19 · CORRÈZE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (20-29)">
+                        <option value="2A">2A · CORSE-DU-SUD</option>
+                        <option value="2B">2B · HAUTE-CORSE</option>
+                        <option value="21">21 · CÔTE-D'OR</option>
+                        <option value="22">22 · CÔTES-D'ARMOR</option>
+                        <option value="23">23 · CREUSE</option>
+                        <option value="24">24 · DORDOGNE</option>
+                        <option value="25">25 · DOUBS</option>
+                        <option value="26">26 · DRÔME</option>
+                        <option value="27">27 · EURE</option>
+                        <option value="28">28 · EURE-ET-LOIR</option>
+                        <option value="29">29 · FINISTÈRE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (30-39)">
+                        <option value="30">30 · GARD</option>
+                        <option value="31">31 · HAUTE-GARONNE</option>
+                        <option value="32">32 · GERS</option>
+                        <option value="33">33 · GIRONDE</option>
+                        <option value="34">34 · HÉRAULT</option>
+                        <option value="35">35 · ILLE-ET-VILAINE</option>
+                        <option value="36">36 · INDRE</option>
+                        <option value="37">37 · INDRE-ET-LOIRE</option>
+                        <option value="38">38 · ISÈRE</option>
+                        <option value="39">39 · JURA</option>
+                    </optgroup>
+                    <optgroup label="Métropole (40-49)">
+                        <option value="40">40 · LANDES</option>
+                        <option value="41">41 · LOIR-ET-CHER</option>
+                        <option value="42">42 · LOIRE</option>
+                        <option value="43">43 · HAUTE-LOIRE</option>
+                        <option value="44">44 · LOIRE-ATLANTIQUE</option>
+                        <option value="45">45 · LOIRET</option>
+                        <option value="46">46 · LOT</option>
+                        <option value="47">47 · LOT-ET-GARONNE</option>
+                        <option value="48">48 · LOZÈRE</option>
+                        <option value="49">49 · MAINE-ET-LOIRE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (50-59)">
+                        <option value="50">50 · MANCHE</option>
+                        <option value="51">51 · MARNE</option>
+                        <option value="52">52 · HAUTE-MARNE</option>
+                        <option value="53">53 · MAYENNE</option>
+                        <option value="54">54 · MEURTHE-ET-MOSELLE</option>
+                        <option value="55">55 · MEUSE</option>
+                        <option value="56">56 · MORBIHAN</option>
+                        <option value="57">57 · MOSELLE</option>
+                        <option value="58">58 · NIÈVRE</option>
+                        <option value="59">59 · NORD</option>
+                    </optgroup>
+                    <optgroup label="Métropole (60-69)">
+                        <option value="60">60 · OISE</option>
+                        <option value="61">61 · ORNE</option>
+                        <option value="62">62 · PAS-DE-CALAIS</option>
+                        <option value="63">63 · PUY-DE-DÔME</option>
+                        <option value="64">64 · PYRÉNÉES-ATLANTIQUES</option>
+                        <option value="65">65 · HAUTES-PYRÉNÉES</option>
+                        <option value="66">66 · PYRÉNÉES-ORIENTALES</option>
+                        <option value="67">67 · BAS-RHIN</option>
+                        <option value="68">68 · HAUT-RHIN</option>
+                        <option value="69">69 · RHÔNE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (70-79)">
+                        <option value="70">70 · HAUTE-SAÔNE</option>
+                        <option value="71">71 · SAÔNE-ET-LOIRE</option>
+                        <option value="72">72 · SARTHE</option>
+                        <option value="73">73 · SAVOIE</option>
+                        <option value="74">74 · HAUTE-SAVOIE</option>
+                        <option value="75">75 · PARIS</option>
+                        <option value="76">76 · SEINE-MARITIME</option>
+                        <option value="77">77 · SEINE-ET-MARNE</option>
+                        <option value="78">78 · YVELINES</option>
+                        <option value="79">79 · DEUX-SÈVRES</option>
+                    </optgroup>
+                    <optgroup label="Métropole (80-95)">
+                        <option value="80">80 · SOMME</option>
+                        <option value="81">81 · TARN</option>
+                        <option value="82">82 · TARN-ET-GARONNE</option>
+                        <option value="83">83 · VAR</option>
+                        <option value="84">84 · VAUCLUSE</option>
+                        <option value="85">85 · VENDÉE</option>
+                        <option value="86">86 · VIENNE</option>
+                        <option value="87">87 · HAUTE-VIENNE</option>
+                        <option value="88">88 · VOSGES</option>
+                        <option value="89">89 · YONNE</option>
+                        <option value="90">90 · TERRITOIRE-DE-BELFORT</option>
+                        <option value="91">91 · ESSONNE</option>
+                        <option value="92">92 · HAUTS-DE-SEINE</option>
+                        <option value="93">93 · SEINE-SAINT-DENIS</option>
+                        <option value="94">94 · VAL-DE-MARNE</option>
+                        <option value="95">95 · VAL-D'OISE</option>
+                    </optgroup>
+                    <optgroup label="DROM-COM">
+                        <option value="971">971 · GUADELOUPE</option>
+                        <option value="972">972 · MARTINIQUE</option>
+                        <option value="973">973 · GUYANE</option>
+                        <option value="974">974 · LA RÉUNION</option>
+                        <option value="975">975 · ST-PIERRE-ET-MIQUELON</option>
+                        <option value="976">976 · MAYOTTE</option>
+                        <option value="977">977 · ST-BARTHÉLEMY</option>
+                        <option value="978">978 · ST-MARTIN</option>
+                        <option value="986">986 · WALLIS-ET-FUTUNA</option>
+                        <option value="987">987 · POLYNÉSIE FRANÇAISE</option>
+                        <option value="988">988 · NOUVELLE-CALÉDONIE</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <div style="text-align:center; padding:25px; background:#0f172a; border-radius:8px;">
+                <a id="explorerLink" href="https://municipales2026.manufacture-osint.fr/#view=explorer&dept=974" target="_blank" class="explorer-link">
+                    <i class="fas fa-map mr-2"></i> LANCER L'EXPLORATEUR
+                </a>
+            </div>
+        </div>
+
+        <!-- UPLOAD CSV -->
+        <div class="panel">
+            <h2 style="color:#00f3ff; margin-bottom:15px; font-size:1.1rem;">
+                <i class="fas fa-upload mr-2"></i> ANALYSE DU FICHIER CSV
+            </h2>
+            <div id="dropZone" class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                <i class="fas fa-file-csv" style="color:#475569; margin-bottom:8px;"></i>
+                <p style="color:white; margin-bottom:5px; font-size:0.9rem;">Chargez le fichier France entière</p>
+                <p style="color:#475569; font-size:0.8rem;">101 départements · 137 Mo</p>
+                <input type="file" id="fileInput" accept=".csv" style="display:none;" onchange="handleFile(this.files[0])">
+            </div>
+            <div id="fileInfo" style="margin-top:10px; padding:12px; background:#0f172a; border-left:4px solid #00ff9d; display:none;">
+                <p id="fileName" style="color:white; font-size:0.8rem;"></p>
+                <p id="fileStats" style="color:#475569; font-size:0.7rem;"></p>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div id="statsCards" class="grid-4" style="display:none;"></div>
+
+        <!-- MOTEUR DE RECHERCHE AVEC DÉPARTEMENTS -->
+        <div id="searchSection" class="panel" style="display:none;">
+            <h2 style="color:#00f3ff; margin-bottom:15px; font-size:1.1rem;">
+                <i class="fas fa-search mr-2"></i> RECHERCHE MULTICRITÈRES
+            </h2>
+            
+            <div class="search-grid">
+                <input type="text" id="searchNom" class="search-input" placeholder="Nom du candidat...">
+                <input type="text" id="searchCommune" class="search-input" placeholder="Commune...">
+                <input type="text" id="searchListe" class="search-input" placeholder="Parti / Liste...">
+                <select id="searchRole" class="search-select">
+                    <option value="">Tous rôles</option>
+                    <option value="OUI">Chefs de liste</option>
+                    <option value="NON">Colistiers</option>
+                </select>
+            </div>
+
+            <div class="search-grid">
+                <!-- SÉLECTEUR DE DÉPARTEMENT COMPLET -->
+                <select id="searchDepartement" class="search-select">
+                    <option value="">Tous les départements (101)</option>
+                    <optgroup label="Métropole (01-19)">
+                        <option value="01">01 · AIN</option>
+                        <option value="02">02 · AISNE</option>
+                        <option value="03">03 · ALLIER</option>
+                        <option value="04">04 · ALPES-DE-HAUTE-PROVENCE</option>
+                        <option value="05">05 · HAUTES-ALPES</option>
+                        <option value="06">06 · ALPES-MARITIMES</option>
+                        <option value="07">07 · ARDÈCHE</option>
+                        <option value="08">08 · ARDENNES</option>
+                        <option value="09">09 · ARIÈGE</option>
+                        <option value="10">10 · AUBE</option>
+                        <option value="11">11 · AUDE</option>
+                        <option value="12">12 · AVEYRON</option>
+                        <option value="13">13 · BOUCHES-DU-RHÔNE</option>
+                        <option value="14">14 · CALVADOS</option>
+                        <option value="15">15 · CANTAL</option>
+                        <option value="16">16 · CHARENTE</option>
+                        <option value="17">17 · CHARENTE-MARITIME</option>
+                        <option value="18">18 · CHER</option>
+                        <option value="19">19 · CORRÈZE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (20-29)">
+                        <option value="2A">2A · CORSE-DU-SUD</option>
+                        <option value="2B">2B · HAUTE-CORSE</option>
+                        <option value="21">21 · CÔTE-D'OR</option>
+                        <option value="22">22 · CÔTES-D'ARMOR</option>
+                        <option value="23">23 · CREUSE</option>
+                        <option value="24">24 · DORDOGNE</option>
+                        <option value="25">25 · DOUBS</option>
+                        <option value="26">26 · DRÔME</option>
+                        <option value="27">27 · EURE</option>
+                        <option value="28">28 · EURE-ET-LOIR</option>
+                        <option value="29">29 · FINISTÈRE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (30-39)">
+                        <option value="30">30 · GARD</option>
+                        <option value="31">31 · HAUTE-GARONNE</option>
+                        <option value="32">32 · GERS</option>
+                        <option value="33">33 · GIRONDE</option>
+                        <option value="34">34 · HÉRAULT</option>
+                        <option value="35">35 · ILLE-ET-VILAINE</option>
+                        <option value="36">36 · INDRE</option>
+                        <option value="37">37 · INDRE-ET-LOIRE</option>
+                        <option value="38">38 · ISÈRE</option>
+                        <option value="39">39 · JURA</option>
+                    </optgroup>
+                    <optgroup label="Métropole (40-49)">
+                        <option value="40">40 · LANDES</option>
+                        <option value="41">41 · LOIR-ET-CHER</option>
+                        <option value="42">42 · LOIRE</option>
+                        <option value="43">43 · HAUTE-LOIRE</option>
+                        <option value="44">44 · LOIRE-ATLANTIQUE</option>
+                        <option value="45">45 · LOIRET</option>
+                        <option value="46">46 · LOT</option>
+                        <option value="47">47 · LOT-ET-GARONNE</option>
+                        <option value="48">48 · LOZÈRE</option>
+                        <option value="49">49 · MAINE-ET-LOIRE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (50-59)">
+                        <option value="50">50 · MANCHE</option>
+                        <option value="51">51 · MARNE</option>
+                        <option value="52">52 · HAUTE-MARNE</option>
+                        <option value="53">53 · MAYENNE</option>
+                        <option value="54">54 · MEURTHE-ET-MOSELLE</option>
+                        <option value="55">55 · MEUSE</option>
+                        <option value="56">56 · MORBIHAN</option>
+                        <option value="57">57 · MOSELLE</option>
+                        <option value="58">58 · NIÈVRE</option>
+                        <option value="59">59 · NORD</option>
+                    </optgroup>
+                    <optgroup label="Métropole (60-69)">
+                        <option value="60">60 · OISE</option>
+                        <option value="61">61 · ORNE</option>
+                        <option value="62">62 · PAS-DE-CALAIS</option>
+                        <option value="63">63 · PUY-DE-DÔME</option>
+                        <option value="64">64 · PYRÉNÉES-ATLANTIQUES</option>
+                        <option value="65">65 · HAUTES-PYRÉNÉES</option>
+                        <option value="66">66 · PYRÉNÉES-ORIENTALES</option>
+                        <option value="67">67 · BAS-RHIN</option>
+                        <option value="68">68 · HAUT-RHIN</option>
+                        <option value="69">69 · RHÔNE</option>
+                    </optgroup>
+                    <optgroup label="Métropole (70-79)">
+                        <option value="70">70 · HAUTE-SAÔNE</option>
+                        <option value="71">71 · SAÔNE-ET-LOIRE</option>
+                        <option value="72">72 · SARTHE</option>
+                        <option value="73">73 · SAVOIE</option>
+                        <option value="74">74 · HAUTE-SAVOIE</option>
+                        <option value="75">75 · PARIS</option>
+                        <option value="76">76 · SEINE-MARITIME</option>
+                        <option value="77">77 · SEINE-ET-MARNE</option>
+                        <option value="78">78 · YVELINES</option>
+                        <option value="79">79 · DEUX-SÈVRES</option>
+                    </optgroup>
+                    <optgroup label="Métropole (80-95)">
+                        <option value="80">80 · SOMME</option>
+                        <option value="81">81 · TARN</option>
+                        <option value="82">82 · TARN-ET-GARONNE</option>
+                        <option value="83">83 · VAR</option>
+                        <option value="84">84 · VAUCLUSE</option>
+                        <option value="85">85 · VENDÉE</option>
+                        <option value="86">86 · VIENNE</option>
+                        <option value="87">87 · HAUTE-VIENNE</option>
+                        <option value="88">88 · VOSGES</option>
+                        <option value="89">89 · YONNE</option>
+                        <option value="90">90 · TERRITOIRE-DE-BELFORT</option>
+                        <option value="91">91 · ESSONNE</option>
+                        <option value="92">92 · HAUTS-DE-SEINE</option>
+                        <option value="93">93 · SEINE-SAINT-DENIS</option>
+                        <option value="94">94 · VAL-DE-MARNE</option>
+                        <option value="95">95 · VAL-D'OISE</option>
+                    </optgroup>
+                    <optgroup label="DROM-COM">
+                        <option value="971">971 · GUADELOUPE</option>
+                        <option value="972">972 · MARTINIQUE</option>
+                        <option value="973">973 · GUYANE</option>
+                        <option value="974">974 · LA RÉUNION</option>
+                        <option value="975">975 · ST-PIERRE-ET-MIQUELON</option>
+                        <option value="976">976 · MAYOTTE</option>
+                        <option value="977">977 · ST-BARTHÉLEMY</option>
+                        <option value="978">978 · ST-MARTIN</option>
+                        <option value="986">986 · WALLIS-ET-FUTUNA</option>
+                        <option value="987">987 · POLYNÉSIE FRANÇAISE</option>
+                        <option value="988">988 · NOUVELLE-CALÉDONIE</option>
+                    </optgroup>
+                </select>
+                
+                <select id="searchSexe" class="search-select">
+                    <option value="">Tous sexes</option>
+                    <option value="M">Hommes</option>
+                    <option value="F">Femmes</option>
+                </select>
+                
+                <button onclick="resetSearch()" class="action-btn">
+                    <i class="fas fa-undo mr-2"></i> Réinitialiser
+                </button>
+                <button onclick="applySearch()" class="search-btn">
+                    <i class="fas fa-search mr-2"></i> Rechercher
+                </button>
+            </div>
+
+            <div id="activeFilters" class="active-filters"></div>
+
+            <div class="search-stats">
+                <span id="resultCount" style="color:#00f3ff; font-size:0.8rem;">0 résultats</span>
+                <span id="totalCount" style="color:#475569; font-size:0.7rem;">Total: 0 candidats</span>
+            </div>
+        </div>
+
+        <!-- TABLEAU -->
+        <div id="tableSection" class="panel" style="display:none;">
+            <h2 style="color:#ff003c; margin-bottom:10px; font-size:1rem;">
+                <i class="fas fa-list mr-2"></i> LISTE DES CANDIDATS
+            </h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NOM</th>
+                            <th>PRÉNOM</th>
+                            <th>DÉP.</th>
+                            <th>COMMUNE</th>
+                            <th>LISTE</th>
+                            <th>RÔLE</th>
+                            <th>SEXE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidatesTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <i class="fas fa-database" style="color:#00f3ff;"></i>
+            SOURCE : data.gouv.fr · resource_id: b929c2a4-18ec-4e8b-bc37-2ff346a867cd · 101 départements
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script>
+        // Dictionnaire des départements (pour affichage)
+        const DEPARTEMENTS = {
+            '01': 'AIN', '02': 'AISNE', '03': 'ALLIER', '04': 'ALPES-DE-HAUTE-PROVENCE',
+            '05': 'HAUTES-ALPES', '06': 'ALPES-MARITIMES', '07': 'ARDÈCHE', '08': 'ARDENNES',
+            '09': 'ARIÈGE', '10': 'AUBE', '11': 'AUDE', '12': 'AVEYRON', '13': 'BOUCHES-DU-RHÔNE',
+            '14': 'CALVADOS', '15': 'CANTAL', '16': 'CHARENTE', '17': 'CHARENTE-MARITIME',
+            '18': 'CHER', '19': 'CORRÈZE', '2A': 'CORSE-SUD', '2B': 'HAUTE-CORSE',
+            '21': 'CÔTE-D\'OR', '22': 'CÔTES-D\'ARMOR', '23': 'CREUSE', '24': 'DORDOGNE',
+            '25': 'DOUBS', '26': 'DRÔME', '27': 'EURE', '28': 'EURE-ET-LOIR', '29': 'FINISTÈRE',
+            '30': 'GARD', '31': 'HAUTE-GARONNE', '32': 'GERS', '33': 'GIRONDE', '34': 'HÉRAULT',
+            '35': 'ILLE-ET-VILAINE', '36': 'INDRE', '37': 'INDRE-ET-LOIRE', '38': 'ISÈRE',
+            '39': 'JURA', '40': 'LANDES', '41': 'LOIR-ET-CHER', '42': 'LOIRE', '43': 'HAUTE-LOIRE',
+            '44': 'LOIRE-ATLANTIQUE', '45': 'LOIRET', '46': 'LOT', '47': 'LOT-ET-GARONNE',
+            '48': 'LOZÈRE', '49': 'MAINE-ET-LOIRE', '50': 'MANCHE', '51': 'MARNE',
+            '52': 'HAUTE-MARNE', '53': 'MAYENNE', '54': 'MEURTHE-ET-MOSELLE', '55': 'MEUSE',
+            '56': 'MORBIHAN', '57': 'MOSELLE', '58': 'NIÈVRE', '59': 'NORD', '60': 'OISE',
+            '61': 'ORNE', '62': 'PAS-DE-CALAIS', '63': 'PUY-DE-DÔME', '64': 'PYRÉNÉES-ATLANTIQUES',
+            '65': 'HAUTES-PYRÉNÉES', '66': 'PYRÉNÉES-ORIENTALES', '67': 'BAS-RHIN', '68': 'HAUT-RHIN',
+            '69': 'RHÔNE', '70': 'HAUTE-SAÔNE', '71': 'SAÔNE-ET-LOIRE', '72': 'SARTHE',
+            '73': 'SAVOIE', '74': 'HAUTE-SAVOIE', '75': 'PARIS', '76': 'SEINE-MARITIME',
+            '77': 'SEINE-ET-MARNE', '78': 'YVELINES', '79': 'DEUX-SÈVRES', '80': 'SOMME',
+            '81': 'TARN', '82': 'TARN-ET-GARONNE', '83': 'VAR', '84': 'VAUCLUSE', '85': 'VENDÉE',
+            '86': 'VIENNE', '87': 'HAUTE-VIENNE', '88': 'VOSGES', '89': 'YONNE',
+            '90': 'TERRITOIRE-DE-BELFORT', '91': 'ESSONNE', '92': 'HAUTS-DE-SEINE',
+            '93': 'SEINE-SAINT-DENIS', '94': 'VAL-DE-MARNE', '95': 'VAL-D\'OISE',
+            '971': 'GUADELOUPE', '972': 'MARTINIQUE', '973': 'GUYANE', '974': 'LA RÉUNION',
+            '975': 'ST-PIERRE-ET-MIQUELON', '976': 'MAYOTTE', '977': 'ST-BARTHÉLEMY',
+            '978': 'ST-MARTIN', '986': 'WALLIS-ET-FUTUNA', '987': 'POLYNÉSIE',
+            '988': 'NOUVELLE-CALÉDONIE'
+        };
+
+        let allCandidates = [];
+        let filteredCandidates = [];
+
+        function updateExplorerLink() {
+            const select = document.getElementById('departementSelect');
+            const link = document.getElementById('explorerLink');
+            const deptCode = select.value;
+            link.href = `https://municipales2026.manufacture-osint.fr/#view=explorer&dept=${deptCode}`;
+        }
+
+        const dropZone = document.getElementById('dropZone');
+        dropZone.addEventListener('dragover', (e) => e.preventDefault());
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (file) handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (!file) return;
+            
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileInfo').style.display = 'block';
+            
+            Papa.parse(file, {
+                delimiter: ";",
+                header: true,
+                skipEmptyLines: true,
+                step: function(row) {
+                    const data = row.data;
+                    const codeDep = data['Code département'] || data['Code'];
+                    
+                    if (codeDep && DEPARTEMENTS[codeDep]) {
+                        allCandidates.push({
+                            codeDep: codeDep,
+                            nom: data['Nom sur le bulletin de vote'] || data['Nom'] || '',
+                            prenom: data['Prénom sur le bulletin de vote'] || data['Prénom'] || '',
+                            departement: DEPARTEMENTS[codeDep],
+                            commune: data['Circonscription'] || data['Commune'] || '',
+                            liste: data['Libellé abrégé de liste'] || data['Liste'] || '',
+                            teteDeListe: data['Tête de liste'] || 'NON',
+                            sexe: data['Sexe'] || ''
+                        });
+                    }
+                },
+                complete: function() {
+                    document.getElementById('statsCards').style.display = 'grid';
+                    document.getElementById('searchSection').style.display = 'block';
+                    document.getElementById('tableSection').style.display = 'block';
+                    updateStats();
+                    filteredCandidates = [...allCandidates];
+                    displayResults();
+                    document.getElementById('fileStats').innerHTML = `${allCandidates.length} candidats chargés`;
+                }
+            });
+        }
+
+        function applySearch() {
+            const searchNom = document.getElementById('searchNom').value.toLowerCase();
+            const searchCommune = document.getElementById('searchCommune').value.toLowerCase();
+            const searchListe = document.getElementById('searchListe').value.toLowerCase();
+            const searchRole = document.getElementById('searchRole').value;
+            const searchDepartement = document.getElementById('searchDepartement').value;
+            const searchSexe = document.getElementById('searchSexe').value;
+
+            filteredCandidates = allCandidates.filter(c => {
+                if (searchNom && !c.nom.toLowerCase().includes(searchNom) && !c.prenom.toLowerCase().includes(searchNom)) return false;
+                if (searchCommune && !c.commune.toLowerCase().includes(searchCommune)) return false;
+                if (searchListe && !c.liste.toLowerCase().includes(searchListe)) return false;
+                if (searchRole && c.teteDeListe !== searchRole) return false;
+                if (searchDepartement && c.codeDep !== searchDepartement) return false;
+                if (searchSexe && c.sexe !== searchSexe) return false;
+                return true;
+            });
+
+            updateActiveFilters();
+            displayResults();
+        }
+
+        function updateActiveFilters() {
+            const container = document.getElementById('activeFilters');
+            const filters = [];
+            
+            const searchNom = document.getElementById('searchNom').value;
+            const searchCommune = document.getElementById('searchCommune').value;
+            const searchListe = document.getElementById('searchListe').value;
+            const searchRole = document.getElementById('searchRole').value;
+            const searchDepartement = document.getElementById('searchDepartement').value;
+            const searchSexe = document.getElementById('searchSexe').value;
+            
+            if (searchNom) filters.push(`<span class="filter-tag">Nom: ${searchNom} <button onclick="clearFilter('nom')">×</button></span>`);
+            if (searchCommune) filters.push(`<span class="filter-tag">Commune: ${searchCommune} <button onclick="clearFilter('commune')">×</button></span>`);
+            if (searchListe) filters.push(`<span class="filter-tag">Liste: ${searchListe} <button onclick="clearFilter('liste')">×</button></span>`);
+            if (searchRole) filters.push(`<span class="filter-tag">${searchRole === 'OUI' ? 'Chefs' : 'Colistiers'} <button onclick="clearFilter('role')">×</button></span>`);
+            if (searchDepartement) {
+                const deptName = DEPARTEMENTS[searchDepartement] || searchDepartement;
+                filters.push(`<span class="filter-tag">Dép: ${searchDepartement} · ${deptName} <button onclick="clearFilter('departement')">×</button></span>`);
+            }
+            if (searchSexe) filters.push(`<span class="filter-tag">${searchSexe === 'M' ? 'Hommes' : 'Femmes'} <button onclick="clearFilter('sexe')">×</button></span>`);
+            
+            container.innerHTML = filters.join(' ');
+        }
+
+        function clearFilter(filter) {
+            switch(filter) {
+                case 'nom': document.getElementById('searchNom').value = ''; break;
+                case 'commune': document.getElementById('searchCommune').value = ''; break;
+                case 'liste': document.getElementById('searchListe').value = ''; break;
+                case 'role': document.getElementById('searchRole').value = ''; break;
+                case 'departement': document.getElementById('searchDepartement').value = ''; break;
+                case 'sexe': document.getElementById('searchSexe').value = ''; break;
+            }
+            applySearch();
+        }
+
+        function resetSearch() {
+            document.getElementById('searchNom').value = '';
+            document.getElementById('searchCommune').value = '';
+            document.getElementById('searchListe').value = '';
+            document.getElementById('searchRole').value = '';
+            document.getElementById('searchDepartement').value = '';
+            document.getElementById('searchSexe').value = '';
+            filteredCandidates = [...allCandidates];
+            updateActiveFilters();
+            displayResults();
+        }
+
+        function displayResults() {
+            const tbody = document.getElementById('candidatesTableBody');
+            document.getElementById('resultCount').innerHTML = `${filteredCandidates.length} résultats`;
+            document.getElementById('totalCount').innerHTML = `Total: ${allCandidates.length}`;
+            
+            if (filteredCandidates.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="padding:30px; text-align:center;">Aucun résultat</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filteredCandidates.slice(0, 500).map(c => `
+                <tr>
+                    <td style="color:white;">${c.nom}</td>
+                    <td>${c.prenom}</td>
+                    <td style="color:#00f3ff;">${c.codeDep}</td>
+                    <td>${c.commune}</td>
+                    <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis;" title="${c.liste}">${c.liste}</td>
+                    <td>${c.teteDeListe === 'OUI' ? '<span class="role-badge role-chef">CHEF</span>' : '-'}</td>
+                    <td>${c.sexe}</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateStats() {
+            const total = allCandidates.length;
+            const femmes = allCandidates.filter(c => c.sexe === 'F').length;
+            const hommes = allCandidates.filter(c => c.sexe === 'M').length;
+            const chefs = allCandidates.filter(c => c.teteDeListe === 'OUI').length;
+            
+            document.getElementById('statsCards').innerHTML = `
+                <div class="download-card">
+                    <div style="color:#475569; font-size:0.7rem;">TOTAL CANDIDATS</div>
+                    <div style="font-size:1.5rem; color:white;">${total}</div>
+                </div>
+                <div class="download-card">
+                    <div style="color:#475569; font-size:0.7rem;">FEMMES</div>
+                    <div style="font-size:1.5rem; color:#ff69b4;">${femmes}</div>
+                    <div style="color:#475569; font-size:0.6rem;">${((femmes/total)*100 || 0).toFixed(1)}%</div>
+                </div>
+                <div class="download-card">
+                    <div style="color:#475569; font-size:0.7rem;">HOMMES</div>
+                    <div style="font-size:1.5rem; color:#4169e1;">${hommes}</div>
+                    <div style="color:#475569; font-size:0.6rem;">${((hommes/total)*100 || 0).toFixed(1)}%</div>
+                </div>
+                <div class="download-card">
+                    <div style="color:#475569; font-size:0.7rem;">CHEFS DE LISTE</div>
+                    <div style="font-size:1.5rem; color:#ff003c;">${chefs}</div>
+                </div>
+            `;
+        }
+
+        document.getElementById('searchNom').addEventListener('input', applySearch);
+        document.getElementById('searchCommune').addEventListener('input', applySearch);
+        document.getElementById('searchListe').addEventListener('input', applySearch);
+        document.getElementById('searchRole').addEventListener('change', applySearch);
+        document.getElementById('searchDepartement').addEventListener('change', applySearch);
+        document.getElementById('searchSexe').addEventListener('change', applySearch);
+        
+        document.getElementById('departementSelect').addEventListener('change', updateExplorerLink);
+        updateExplorerLink();
+    </script>
+</body>
+</html>
